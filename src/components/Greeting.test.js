@@ -38,9 +38,7 @@ describe("Greeting component", () => {
     userEvent.click(buttonElement);
 
     // assert
-    const outputElement = screen.queryByText("good to see you", {
-      exact: false,
-    });
-    expect(outputElement).toBeNull();
+    const outputElement = screen.queryByText("Changed!");
+    expect(outputElement).toBeInTheDocument();
   });
 });
