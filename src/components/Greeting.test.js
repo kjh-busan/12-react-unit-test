@@ -29,7 +29,7 @@ describe("Greeting component", () => {
     expect(greetingNotRenderingElement).toBeInTheDocument();
   });
 
-  test("render changed if the button was clicked", () => {
+  test("renders 'Changed!' if the button was clicked", () => {
     // arrange
     render(<Greeting />);
 
@@ -40,5 +40,20 @@ describe("Greeting component", () => {
     // assert
     const outputElement = screen.queryByText("Changed!");
     expect(outputElement).toBeInTheDocument();
+  });
+
+  test('does not render "good to see you" if the button was clikced', () => {
+    // arrange
+    render(<Greeting />);
+
+    // act
+    const buttonElement = screen.getByRole("button");
+    userEvent.click(buttonElement);
+
+    // assert
+    const outputElement = screen.queryByText("good to see you!", {
+      exact: false,
+    });
+    expect(outputElement).toBeNull();
   });
 });
