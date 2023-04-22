@@ -19,9 +19,6 @@ describe("Greeting component", () => {
     // Arrange
     render(<Greeting />);
 
-    // Act
-    // ...Nothings...
-
     // Assert
     const greetingNotRenderingElement = screen.getByText("good to see you", {
       exact: false,
@@ -38,7 +35,7 @@ describe("Greeting component", () => {
     userEvent.click(buttonElement);
 
     // assert
-    const outputElement = screen.queryByText("Changed!");
+    const outputElement = screen.getByText("Changed!");
     expect(outputElement).toBeInTheDocument();
   });
 
