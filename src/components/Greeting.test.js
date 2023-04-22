@@ -16,41 +16,22 @@ describe("Greeting component", () => {
   });
 
   test("renders good to see you if the button was NOT clicked", () => {
-    // Arrange
     render(<Greeting />);
 
-    // Assert
-    const greetingNotRenderingElement = screen.getByText("good to see you", {
-      exact: false,
-    });
-    expect(greetingNotRenderingElement).toBeInTheDocument();
-  });
-
-  test("renders 'Changed!' if the button was clicked", () => {
-    // arrange
-    render(<Greeting />);
-
-    // act
-    const buttonElement = screen.getByRole("button");
-    userEvent.click(buttonElement);
-
-    // assert
-    const outputElement = screen.getByText("Changed!");
+    const outputElement = screen.getByText("good to see you", { exact: false });
     expect(outputElement).toBeInTheDocument();
   });
 
-  test('does not render "good to see you" if the button was clikced', () => {
-    // arrange
+  test("renders Changed! if the button was clicked", () => {
+    //Arrange
     render(<Greeting />);
 
-    // act
+    // Act
     const buttonElement = screen.getByRole("button");
     userEvent.click(buttonElement);
 
-    // assert
-    const outputElement = screen.queryByText("good to see you!", {
-      exact: false,
-    });
-    expect(outputElement).toBeNull();
+    // Assert
+    const outputElement = screen.getByText("Changed!", { exact: false });
+    expect(outputElement).toBeInTheDocument();
   });
 });

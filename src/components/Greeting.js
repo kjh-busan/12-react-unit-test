@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const Greeting = () => {
   const [changedText, setChangedText] = useState(false);
+
   const changedTextHandler = () => {
     setChangedText(true);
   };
